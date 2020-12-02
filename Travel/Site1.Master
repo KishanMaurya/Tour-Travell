@@ -1,0 +1,336 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site1.master.cs" Inherits="Travel.Site1" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title>Tourism  || Travel</title>
+     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Peulis | Travel Agency & Tourism HTML Template">
+    <meta name="keyword" content="travel, tourism, agency, tourist">
+    <meta name="author" content="Themescare">
+    <!-- Title -->
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon/favicon-32x32.png">
+    <!--Bootstrap css-->
+    <link rel="stylesheet" href="assets/css/bootstrap.css">
+    <!--Font Awesome css-->
+    <link rel="stylesheet" href="assets/css/font-awesome.min.css">
+    <!--Flaticon css-->
+    <link rel="stylesheet" href="assets/flaticon/flaticon.css">
+    <!--Animatedheadline css-->
+    <link rel="stylesheet" href="assets/css/jquery.animatedheadline.css">
+    <!--Magnific css-->
+    <link rel="stylesheet" href="assets/css/magnific-popup.css">
+    <!--Owl-Carousel css-->
+    <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="assets/css/owl.theme.default.min.css">
+    <!--Animate css-->
+    <link rel="stylesheet" href="assets/css/animate.min.css">
+    <!--Datepicker css-->
+    <link rel="stylesheet" href="assets/css/jquery.datepicker.css">
+    <!--Nice Select css-->
+    <link rel="stylesheet" href="assets/css/nice-select.css">
+    <!--Slicknav css-->
+    <link rel="stylesheet" href="assets/css/slicknav.min.css">
+    <!--Site Main Style css-->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <!--Responsive css-->
+    <link rel="stylesheet" href="assets/css/responsive.css">
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <!-- Header Area Start -->
+    <header class="peulis-header-area">
+        <!-- Header Top Area Start -->
+        <div class="header-top-area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 col-sm-6">
+                        <div class="header-top-left">
+                            <p>
+                                Traveller Hai To Sahi Hai
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-sm-6">
+                        <div class="header-top-right">
+                            <div class="header-top-auth">
+                                <ul>
+                                    <%
+                                        if(Session["email"] != null && Session["name"] !=null && Session["user"] == "User"){
+                                            %>
+                                                <li>
+                                                    <div class="dropdown">
+                                                      <a class="text-dark dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                       <i class="fas fa-user"></i><% Response.Write(Session["name"]); %>
+                                                      </a>
+
+                                                      <div class="dropdown-menu text-dark" aria-labelledby="dropdownMenuLink">
+                                                          <asp:HyperLink ID="HyperLink17" class="dropdown-item text-dark" runat="server">Profile</asp:HyperLink>
+                                                          <asp:HyperLink ID="HyperLink18" class="dropdown-item text-dark" runat="server">AllPackage</asp:HyperLink>
+                                                          <asp:Button ID="Button1" runat="server" Text="Logout" class="dropdown-item text-dark" OnClick="Logout" />
+                                                      </div>
+                                                    </div>
+                                                </li> 
+                                            <%
+                                        }
+                                        else if(Session["email"] != null && Session["user"] == "Admin"){
+                                               %>
+                                                    <li>
+                                                    <div class="dropdown">
+                                                      <a class="text-dark dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                       <i class="fas fa-user"></i><% Response.Write(Session["user"]); %>
+                                                      </a>
+
+                                                      <div class="dropdown-menu text-dark" aria-labelledby="dropdownMenuLink">
+                                                          <asp:HyperLink ID="HyperLink19" class="dropdown-item text-dark" NavigateUrl="~/admin.aspx" runat="server">Product</asp:HyperLink>
+                                                          <asp:Button ID="Button2" runat="server" Text="Logout" class="dropdown-item text-dark" OnClick="Logout" />
+                                                      </div>
+                                                    </div>
+                                                </li> 
+                                                <%
+                                        }
+                                        else
+
+                                        {
+                                            %>
+                                                <li class="separator">
+                                                    <asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="~/login.aspx">Login</asp:HyperLink>
+                                                </li>
+                                                <li>
+                                                    <asp:HyperLink ID="HyperLink2" runat="server" NavigateUrl="~/register.aspx">Register</asp:HyperLink>
+                                                </li>
+                                            <%
+                                        }
+                                    %>
+                                    
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Header Top Area End -->
+
+        <!-- Main Header Area Start -->
+        <div class="main-header-area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="header_inn">
+                            <div class="row">
+                                <div class="col-lg-3">
+                                    <div class="site-logo">
+                                        <asp:HyperLink ID="HyperLink3" runat="server" NavigateUrl="~/index.aspx">
+                                            <img src="assets/img/travel.jpg" alt="Peulis" />
+                                        </asp:HyperLink>
+                                    </div>
+                                    <!-- Responsive Menu Start -->
+                                    <div class="peulis-responsive-menu"></div>
+                                    <!-- Responsive Menu End -->
+                                </div>
+                                <div class="col-lg-7">
+                                    <div class="mainmenu">
+                                        <nav>
+                                            <ul id="navigation_menu">
+                                                <li class="active">
+                                                    <asp:HyperLink ID="HyperLink4" runat="server" NavigateUrl="~/index.aspx">Home</asp:HyperLink>
+                                                </li>
+                                                <li>
+                                                    <a href="#">Pages</a>
+                                                    <ul>
+                                                        <li><asp:HyperLink ID="HyperLink5" runat="server" NavigateUrl="~/about.aspx">About Us</asp:HyperLink></li>
+                                                        <li><asp:HyperLink ID="HyperLink6" runat="server" NavigateUrl="~/guides.aspx">Meet Our Guides</asp:HyperLink></li>
+                                                        <li><asp:HyperLink ID="HyperLink7" runat="server" NavigateUrl="~/gallery.aspx">Gallery</asp:HyperLink></li>
+                                                        <li><asp:HyperLink ID="HyperLink8" runat="server" NavigateUrl="~/faq.aspx">FAQ Page</asp:HyperLink></li>
+                                                        <li><asp:HyperLink ID="HyperLink9" runat="server" NavigateUrl="~/register.aspx">Register</asp:HyperLink></li>
+                                                        <li><asp:HyperLink ID="HyperLink10" runat="server" NavigateUrl="~/login.aspx">Login</asp:HyperLink></li>
+                                                    </ul>
+                                                </li>
+                                                <li>
+                                                    <a href="#">Destinations</a>
+                                                    <ul>
+                                                        <li><asp:HyperLink ID="HyperLink11" runat="server" NavigateUrl="~/destination_four.aspx">Destination 3 </asp:HyperLink></li>
+                                                        <li><asp:HyperLink ID="HyperLink12" runat="server" NavigateUrl="~/destination_three.aspx">Destination 4 </asp:HyperLink></li>
+                                                        <li><asp:HyperLink ID="HyperLink13" runat="server" NavigateUrl="~/destination_single.aspx">Single Destination  </asp:HyperLink></li>
+                                                    </ul>
+                                                </li>
+                                                <li>
+                                                    <a href="#">tours</a>
+                                                    <ul>
+                                                        <li><asp:HyperLink ID="HyperLink14" runat="server" NavigateUrl="~/tour_sidebar.aspx">Tour Sidebars</asp:HyperLink></li>
+                                                        <li><asp:HyperLink ID="HyperLink15" runat="server" NavigateUrl="~/tour_details.aspx">Tour Details</asp:HyperLink></li>
+                                                    </ul>
+                                                </li>
+                                                <li>
+                                                    <a href="#">Blog</a>
+                                                    <ul>
+                                                        <li><a href="blog.html">Blog With Sidebar</a></li>
+                                                        <li><a href="single-blog.html">Blog Details</a></li>
+                                                    </ul>
+                                                </li>
+                                                <li>
+                                                    <a href="#">Shop</a>
+                                                    <ul>
+                                                        <li><a href="product.html">Product</a></li>
+                                                        <li><a href="single-product.html">Product Details</a></li>
+                                                        <li><a href="checkout.html">Checkout</a></li>
+                                                    </ul>
+                                                </li>
+                                                <li><asp:HyperLink ID="HyperLink16" runat="server" NavigateUrl="~/contact.aspx">Contact</asp:HyperLink></li>
+                                            </ul>
+                                        </nav>
+                                    </div>
+                                </div>
+                                <div class="col-lg-2">
+                                    <div class="header_action">
+                                        <ul>
+                                            <li><a href="#" id="sidenav-toggle"><i class="fa fa-bars"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Main Header Area End -->
+    </header>
+    <!-- Header Area End -->
+
+        <div>
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+
+        
+    <!-- Footer Area Start -->
+    <footer class="peulis-footer-area">
+        <div class="footer-top-area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3 col-sm-6">
+                        <div class="single-footer">
+                            <p>ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.ipsum dolor sit amet, consectetur </p>
+                            <div class="footer-logo">
+                                <a href="index-2.html">
+                                    <img src="assets/img/travel.jpg" alt="Peulis" />
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-6">
+                        <div class="single-footer">
+                            <h3>About Us</h3>
+                            <ul>
+                                <li><a href="#">Why Us</a></li>
+                                <li><a href="#">Why Touring</a></li>
+                                <li><a href="#">Reviews</a></li>
+                                <li><a href="#">Travel Insurance</a></li>
+                                <li><a href="#">Programme</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-6">
+                        <div class="single-footer">
+                            <h3>Support</h3>
+                            <ul>
+                                <li><a href="#">Account</a></li>
+                                <li><a href="#">Client Area</a></li>
+                                <li><a href="#">Privacy & Policy</a></li>
+                                <li><a href="#">Author Hangout</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom-area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="footer-bottom-box">
+                            <div class="row">
+                                <div class="col-lg-6 col-sm-6">
+                                    <div class="footer-bottom-left">
+                                        <p>&copy; Copyright @2020 <a href="#">Themescare</a></p>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-sm-6">
+                                    <div class="footer-bottom-left">
+                                        <ul>
+                                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                            <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                                            <li><a href="#"><i class="fa fa-skype"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Footer Area End -->
+
+
+    <!-- Sidebar Navigation Start -->
+    <div class="ct-sidenav">
+        <button class="close"><i class="fa fa-times"></i></button>
+        <img src="assets/img/travel.jpg" alt="Peulis" />
+        <div class="sidenav-info">
+            <p>Lorem Ipsum is simply dummied text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since when an unknown printer took a galley of type and scrambled it to make a type specimen book.printing and typesetting industry It has survived not only five centuries.</p>
+            <ul class="sidenav-contact-info">
+                <li>
+                    <i class="fa fa-map-marker"></i>
+                    <p>YCM Hospital <span>Pimpri pune 411018</span></p>
+                </li>
+                <li>
+                    <i class="fa fa-phone"></i>
+                    <p> +91 8687 67 7493 <span>Give us a call</span></p>
+                </li>
+                <li>
+                    <i class="fa fa-envelope"></i>
+                    <p> support@example.com<span>24/7 online support</span></p>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!-- Sidebar Navigation End -->
+
+
+    <!--Jquery js-->
+    <script src="assets/js/jquery.min.js"></script>
+    <!-- Popper JS -->
+    <script src="assets/js/popper.min.js"></script>
+    <!--Bootstrap js-->
+    <script src="assets/js/bootstrap.min.js"></script>
+    <!--Owl-Carousel js-->
+    <script src="assets/js/owl.carousel.min.js"></script>
+    <!--Animatedheadline js-->
+    <script src="assets/js/jquery.animatedheadline.min.js"></script>
+    <!--Slicknav js-->
+    <script src="assets/js/jquery.slicknav.min.js"></script>
+    <!--Magnific js-->
+    <script src="assets/js/jquery.magnific-popup.min.js"></script>
+    <!-- Datepicker -->
+    <script src="assets/js/jquery.datepicker.min.js"></script>
+    <!--Nice Select js-->
+    <script src="assets/js/jquery.nice-select.min.js"></script>
+    <!-- Way Points JS -->
+    <script src="assets/js/waypoints-min.js"></script>
+    <!--Main js-->
+    <script src="assets/js/main.js"></script>
+    </form>
+</body>
+</html>
